@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-    const URL = process.env.MONGODB_LOCAL;
+    const URL = process.env.MONGODB_CLOUD;
     try {
         console.log('abc', URL);
         const conn = await mongoose.connect(URL, {

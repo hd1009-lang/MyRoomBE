@@ -1,11 +1,13 @@
-const express = require('express');
-const fileUpload = require('express-fileupload');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const connectDB = require('./config/db');
-const authRoute = require('./routes/auth.route');
-const configRoute = require('./routes/config.route');
+const express = require("express");
+const fileUpload = require("express-fileupload");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const connectDB = require("./config/db");
+
+const authRoute = require("./routes/auth.route");
+const configRoute = require("./routes/config.route");
+const timelineRoute = require("./routes/timeline.route");
 
 dotenv.config();
 connectDB();
@@ -19,11 +21,11 @@ app.use(
         useTempFiles: true,
     })
 );
-app.get('/', (req, res) => res.json({ msg: 'Ok' }));
+app.get("/", (req, res) => res.json({ msg: "Ok" }));
 const PORT = 5000;
-app.use('/api/user', authRoute);
-app.use('/api/config', configRoute);
-
+app.use("/api/user", authRoute);
+app.use("/api/config", configRoute);
+app.use("/api/timeline", timelineRoute);
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`);
 });
