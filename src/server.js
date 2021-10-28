@@ -24,7 +24,7 @@ app.use(
         useTempFiles: true,
     })
 );
-app.get('/', (req, res) => res.json({ msg: 'Ok' }));
+app.get('/', (req, res) => res.json({ msg: 'welcome to api' }));
 const PORT = 5000;
 app.use('/api/user', authRoute);
 app.use('/api/config', configRoute);
