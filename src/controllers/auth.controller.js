@@ -27,6 +27,14 @@ const authController = {
         } catch (error) {
             return res.status(500).json({msg: error.message})
         }
+    },
+    getAcceptToken: async(req,res)=>{
+        try {
+            const acceptToken = tokenService.generateAcceptToken(req.body.password);
+            return res.status(200).json({key:acceptToken})
+        } catch (error) {
+            return res.status(500).json({msg: error.message})
+        }
     }
 };
 

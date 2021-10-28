@@ -15,10 +15,29 @@ const TimelineController = {
             return res.status(400).json({ msg: error.message });
         }
     },
-    dowloadCV: async (req, res) => {
+    getTimeline: async (req, res) => {
         try {
-            const file = `${process.cwd()}/src/assets/CV_HoangDai_IternFE.pdf`;
-            return res.download(file);
+            const result = await Service.getTimeline();
+            console.log(result);
+            return res.status(200).json({ list: result });
+        } catch (error) {
+            return res.status(400).json({ msg: error.message });
+        }
+    },
+    updateTimeline: async (req, res) => {
+        try {
+            const result = await Service.updateTimeline({ ...req.body });
+            return res
+                .status(200)
+                .json({ msg: 'Cập nhật thành công', newInfo: result });
+        } catch (error) {
+            return res.status(400).json({ msg: error.message });
+        }
+    },
+    downloadCV: async (req, res) => {
+        try {
+            const result = Service.getCV();
+            return res.download(result);
         } catch (error) {
             return res.status(500).json({ msg: error.message });
         }
