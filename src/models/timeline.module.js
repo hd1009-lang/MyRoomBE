@@ -21,6 +21,7 @@ const timelineSchema = new mongoose.Schema(
         },
         show: {
             type: Boolean,
+            default:false,
             required: true,
         },
     },

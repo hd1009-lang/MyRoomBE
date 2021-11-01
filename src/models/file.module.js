@@ -17,7 +17,6 @@ const fileSchema = new mongoose.Schema(
         },
         urlDownload: {
             type: String,
-            required: true,
         },
     },
     { timestamps: true }

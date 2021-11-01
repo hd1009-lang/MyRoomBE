@@ -13,6 +13,18 @@ const fileController = {
             return res.status(500).json({ msg: error.message });
         }
     },
+    updateFile: async (req, res) => {
+        try {
+            const resultLink = await driveAPI.updateFile(
+                req.body.idFile,
+                req.files.file
+            );
+            return res.status(200).json({ resultLink });
+        } catch (error) {
+            console.log(error.message);
+            return res.status(500).json({ msg: error.message });
+        }
+    },
 };
 
 module.exports = fileController;

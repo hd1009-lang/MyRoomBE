@@ -3,7 +3,7 @@ const Timeline = require('../models/timeline.module');
 const timelineService = {
     addTimeline: async (info) => {
         try {
-            const newTimeline = new Timeline({ ...info, show: false });
+            const newTimeline = new Timeline({ ...info});
             await newTimeline.save();
             return newTimeline;
         } catch (error) {
@@ -24,7 +24,6 @@ const timelineService = {
         const { _id, ...infoUpdate } = info;
         try {
             const result = await Timeline.findByIdAndUpdate(id, infoUpdate);
-            console.log(result);
             return result;
         } catch (error) {
             throw new Error(error.message);

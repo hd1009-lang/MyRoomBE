@@ -76,7 +76,8 @@ const driveAPI = {
                     body: fs.createReadStream(file.tempFilePath),
                 },
             });
-            return response.status
+            removeTmp(file.tempFilePath);
+            return response.status;
         } catch (error) {
             throw new Error(error);
         }
