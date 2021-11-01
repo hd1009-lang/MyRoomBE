@@ -9,8 +9,8 @@ router.get('/list', auth.acceptKey, TimelineController.getTimeline);
 router.post(
     '/add',
     // authMiddleware.certificate,
-    timelineValidation, 
+    timelineValidation,
     TimelineController.addTimeline
 );
-router.post('/edit',TimelineController.updateTimeline)
+router.post('/edit', TimelineController.updateTimeline);
 module.exports = router;
