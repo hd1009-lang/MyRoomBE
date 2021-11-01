@@ -5,12 +5,13 @@ const hanleUploadImg = require('../utils/uploadImg');
 const TimelineController = {
     addTimeline: async (req, res) => {
         try {
-            const images = await hanleUploadImg.uploadManyImg(req.files);
-            const info = { avatar: images[0], logo: images[1], ...req.body };
-            const result = await Service.addTimeline(info);
+            // const images = await hanleUploadImg.uploadManyImg(req.files);
+            const images = await hanleUploadImg.uploadImg(req.files.avatar);
+            // const info = { avatar: images[0], logo: images[1], ...req.body };
+            // const result = await Service.addTimeline(info);
             return res
                 .status(200)
-                .json({ msg: 'Thêm thành công', info: result });
+                .json({ msg: 'Thêm thành công', info: images });
         } catch (error) {
             return res.status(400).json({ msg: error.message });
         }
