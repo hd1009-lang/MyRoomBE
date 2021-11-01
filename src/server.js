@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(
     fileUpload({
         useTempFiles: true,
-        tempFileDir: './tmp',
+        tempFileDir: '/src/tmp',
     })
 );
 app.get('/', (req, res) => res.json({ msg: 'welcome to api' }));
