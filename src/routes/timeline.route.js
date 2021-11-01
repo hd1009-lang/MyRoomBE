@@ -8,7 +8,7 @@ const auth = require('../middlewares/auth.middleware');
 router.get('/list', auth.acceptKey, TimelineController.getTimeline);
 router.post(
     '/add',
-    authMiddleware.certificate,
+    // authMiddleware.certificate,
     timelineValidation, 
     TimelineController.addTimeline
 );
