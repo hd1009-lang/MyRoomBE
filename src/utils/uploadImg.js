@@ -30,7 +30,7 @@ const hanleUploadImg = {
                         url: rs.url,
                     };
                     result = infoImg;
-                    // removeTmp(image.tempFilePath);
+                    removeTmp(image.tempFilePath);
                 }
             );
             return result;

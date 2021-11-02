@@ -1,12 +1,12 @@
 const hanleUploadImg = require('../utils/uploadImg');
-const Service = require('../services/tech.service');
+const Service = require('../services/icon.service');
 
-const techController = {
-    addTech: async (req, res) => {
+const iconController = {
+    addIcon: async (req, res) => {
         try {
             const resultLink = await hanleUploadImg.uploadImg(req.files.file);
             const info = { ...req.body, ...resultLink };
-            const result = await Service.addTech(info);
+            const result = await Service.addIcon(info);
             return res.status(200).json({ result });
         } catch (error) {
             return res.status(500).json({ msg: error.message });
@@ -14,4 +14,4 @@ const techController = {
     },
 };
 
-module.exports = techController;
+module.exports = iconController;

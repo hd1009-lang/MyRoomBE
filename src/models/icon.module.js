@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const techSchema = new mongoose.Schema({
+const iconSchema = new mongoose.Schema({
     idFile: {
         type: String,
         required: true,
@@ -14,6 +14,6 @@ const techSchema = new mongoose.Schema({
         required: true,
     },
 });
-const Tech = mongoose.model('Tech',techSchema)
+const Icon = mongoose.model('Icon', iconSchema);
 
-module.exports = Tech
+module.exports = Icon;

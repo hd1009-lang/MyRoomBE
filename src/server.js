@@ -11,6 +11,7 @@ const timelineRoute = require('./routes/timeline.route');
 const keyRoute = require('./routes/key.route');
 const fileRoute = require('./routes/file.route');
 const projectRoute = require('./routes/project.route');
+const personRoute = require('./routes/person.route');
 
 dotenv.config();
 connectDB();
@@ -27,12 +28,15 @@ app.use(
 );
 app.get('/', (req, res) => res.json({ msg: 'welcome to api' }));
 const PORT = 5000;
+
 app.use('/api/user', authRoute);
 app.use('/api/config', configRoute);
 app.use('/api/timeline', timelineRoute);
 app.use('/api/key', keyRoute);
 app.use('/api/file', fileRoute);
 app.use('/api/project', projectRoute);
+app.use('/api/person', personRoute);
+
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`);
 });

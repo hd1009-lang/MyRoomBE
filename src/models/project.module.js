@@ -17,7 +17,7 @@ const projectSchema = new mongoose.Schema(
         techUse: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'Tech',
+                ref: 'Icon',
             },
         ],
         demo: {
