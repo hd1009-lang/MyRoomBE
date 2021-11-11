@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const iconSchema = new mongoose.Schema({
+const imageSchema = new mongoose.Schema({
     idFile: {
         type: String,
         required: true,
@@ -13,7 +13,11 @@ const iconSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    cate: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CateImg',
+    },
 });
-const Icon = mongoose.model('Icon', iconSchema);
+const Image = mongoose.model('Image', imageSchema);
 
-module.exports = Icon;
+module.exports = Image;

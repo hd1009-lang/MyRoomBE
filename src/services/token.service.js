@@ -30,7 +30,7 @@ const tokenService = {
             });
             return accessToken;
         } catch (error) {
-            throw new Error('Lỗi xác thực');
+            throw new Error(error);
         }
     },
 };

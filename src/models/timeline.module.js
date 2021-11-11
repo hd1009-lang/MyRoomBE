@@ -10,7 +10,7 @@ const timelineSchema = new mongoose.Schema(
             id: { type: String, required: true },
             url: { type: String, required: true },
         },
-        timeExp: {
+        timeExp: {        
             type: String,
             required: true,
         },

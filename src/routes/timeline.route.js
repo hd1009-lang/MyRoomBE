@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const TimelineController = require('../controllers/timeline.controller');
 const timelineValidation = require('../validations/timeline.validation');
-const authMiddleware = require('../middlewares/auth.middleware');
+// const authMiddleware = require('../middlewares/auth.middleware');
 const auth = require('../middlewares/auth.middleware');
 
 // router.get('/', TimelineController.downloadCV);
