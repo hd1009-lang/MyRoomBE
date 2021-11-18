@@ -8,7 +8,7 @@ const authService = {
                 throw new Error('Mật khẩu không đúng');
             return config[0];
         } catch (error) {
-            throw new Error(error);
+            throw new Error(error.message);
         }
     },
 };

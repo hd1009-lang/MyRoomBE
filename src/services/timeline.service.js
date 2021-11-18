@@ -1,9 +1,14 @@
 const Timeline = require('../models/timeline.module');
+const Image = require('../models/image.module');
 
 const timelineService = {
     addTimeline: async (info) => {
         try {
-            const newTimeline = new Timeline({ ...info});
+            const imageLogo = await Image.findById(info.logo);
+            if (!imageLogo) throw new Error('Ảnh logo không tồn tại');
+            const imageAvatar = await Image.findById(info.avatar);
+            if (!imageAvatar) throw new Error('Ảnh avatar không tồn tại');
+            const newTimeline = new Timeline({ ...info });
             await newTimeline.save();
             return newTimeline;
         } catch (error) {
@@ -12,7 +17,9 @@ const timelineService = {
     },
     getTimeline: async () => {
         try {
-            const result = await Timeline.find({ show: true }).limit(4);
+            const result = await Timeline.find()
+                .limit(4)
+                .populate('logo avatar', 'urlShow');
             return result;
         } catch (error) {
             throw new Error(error.message);
@@ -29,14 +36,14 @@ const timelineService = {
             throw new Error(error.message);
         }
     },
-    getCV:()=>{
+    getCV: () => {
         try {
             const file = `${process.cwd()}/src/assets/CV_HoangDai_IternFE.pdf`;
-            return file
+            return file;
         } catch (error) {
             throw new Error(error.message);
         }
-    }
+    },
 };
 
 module.exports = timelineService;

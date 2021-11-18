@@ -12,6 +12,23 @@ const iconController = {
             return res.status(500).json({ msg: error.message });
         }
     },
+    getImage: async (req, res) => {
+        try {
+            const query = req.params.cate;
+            const result = await Service.getImage(query);
+            return res.status(200).json({ result });
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
+    },
+    getAllImg: async (req, res) => {
+        try {
+            const result = await Service.getAllImage();
+            return res.status(200).json({ result });
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
+    },
     addCateImage: async (req, res) => {
         try {
             const result = await Service.addCateImg(req.body.name);
@@ -20,10 +37,9 @@ const iconController = {
             return res.status(500).json({ msg: error.message });
         }
     },
-    getImage: async (req, res) => {
+    getCateImage: async (req, res) => {
         try {
-            const query = req.params.cate;
-            const result = await Service.getImage(query);
+            const result = await Service.getCateImg();
             return res.status(200).json({ result });
         } catch (error) {
             return res.status(500).json({ msg: error.message });

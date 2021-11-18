@@ -6,9 +6,15 @@ const imageController = require('../controllers/image.controller');
 
 router.get('/', configController.getListConfig);
 
-router.route('/image').post(imageController.addImage);
+router
+    .route('/image')
+    .post(imageController.addImage)
+    .get(imageController.getAllImg);
 router.get('/image/:cate', imageController.getImage);
 
-router.route('/cate--img').post(imageController.addCateImage);
+router
+    .route('/cate--img')
+    .post(imageController.addCateImage)
+    .get(imageController.getCateImage);
 
 module.exports = router;

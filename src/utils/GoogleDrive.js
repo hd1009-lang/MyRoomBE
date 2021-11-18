@@ -53,7 +53,7 @@ const driveAPI = {
             removeTmp(file.tempFilePath);
             return result.data;
         } catch (error) {
-            throw new Error(error);
+            throw new Error(error.message);
         }
     },
     deleteFile: async (fileId) => {
@@ -63,7 +63,7 @@ const driveAPI = {
             });
             return response.data;
         } catch (error) {
-            throw new Error(error);
+            throw new Error(error.message);
         }
     },
     updateFile: async (idFile, file) => {
@@ -79,7 +79,7 @@ const driveAPI = {
             removeTmp(file.tempFilePath);
             return response.status;
         } catch (error) {
-            throw new Error(error);
+            throw new Error(error.message);
         }
     },
 };

@@ -21,7 +21,7 @@ const personService = {
             await Person.findByIdAndUpdate(id, body);
             return;
         } catch (error) {
-            throw new Error(error);
+            throw new Error(error.message);
         }
     },
     getPerson: async()=>{

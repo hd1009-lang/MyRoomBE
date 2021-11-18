@@ -17,6 +17,10 @@ const imageSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CateImg',
     },
+    status: {
+        type: Boolean,
+        default: false,
+    },
 });
 const Image = mongoose.model('Image', imageSchema);
 

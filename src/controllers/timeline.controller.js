@@ -1,16 +1,14 @@
 const Service = require('../services/timeline.service');
 
-const hanleUploadImg = require('../utils/uploadImg');
+// const hanleUploadImg = require('../utils/uploadImg');
 
 const TimelineController = {
     addTimeline: async (req, res) => {
         try {
-            const images = await hanleUploadImg.uploadManyImg(req.files);
-            const info = { avatar: images[0], logo: images[1], ...req.body };
-            const result = await Service.addTimeline(info);
-            return res
-                .status(200)
-                .json({ msg: 'Thêm thành công', info: result });
+            // const images = await hanleUploadImg.uploadManyImg(req.files);
+            // const info = { avatar: images[0], logo: images[1], ...req.body };
+            await Service.addTimeline(req.body);
+            return res.status(200).json({ result: 'Thành công' });
         } catch (error) {
             return res.status(400).json({ msg: error.message });
         }
@@ -18,8 +16,7 @@ const TimelineController = {
     getTimeline: async (req, res) => {
         try {
             const result = await Service.getTimeline();
-            console.log(result);
-            return res.status(200).json({ list: result });
+            return res.status(200).json({ result });
         } catch (error) {
             return res.status(400).json({ msg: error.message });
         }

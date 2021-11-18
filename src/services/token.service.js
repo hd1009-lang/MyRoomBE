@@ -30,7 +30,7 @@ const tokenService = {
             });
             return accessToken;
         } catch (error) {
-            throw new Error(error);
+            throw new Error(error.message);
         }
     },
 };

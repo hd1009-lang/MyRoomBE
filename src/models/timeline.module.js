@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 const timelineSchema = new mongoose.Schema(
     {
         avatar: {
-            id: { type: String, required: true },
-            url: { type: String, required: true },
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Image',
         },
         logo: {
-            id: { type: String, required: true },
-            url: { type: String, required: true },
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Image',
         },
-        timeExp: {        
+        timeExp: {
             type: String,
             required: true,
         },
@@ -21,7 +21,7 @@ const timelineSchema = new mongoose.Schema(
         },
         show: {
             type: Boolean,
-            default:false,
+            default: false,
             required: true,
         },
     },

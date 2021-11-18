@@ -15,20 +15,7 @@ const imageService = {
             await newTech.save();
             return newTech;
         } catch (error) {
-            throw new Error(error);
-        }
-    },
-    addCateImg: async (info) => {
-        try {
-            const cate = await CateImg.findOne({ name: info });
-            if (cate) throw new Error('Đã tồn tại');
-            const newCate = new CateImg({
-                name: info,
-            });
-            await newCate.save();
-            return newCate;
-        } catch (error) {
-            throw new Error(error);
+            throw new Error(error.message);
         }
     },
     getImage: async (cate) => {
@@ -37,6 +24,36 @@ const imageService = {
             if (!idCate) throw new Error('Không tồn tại');
             const result = await Image.find({ cate: idCate });
             return result;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    },
+    getAllImage: async () => {
+        try {
+            const data = await Image.find().populate('cate', 'name');
+            return data;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    },
+    addCateImg: async (info) => {
+        const newInfo = info.toLowerCase();
+        try {
+            const cate = await CateImg.findOne({ name: newInfo });
+            if (cate) throw new Error('Đã tồn tại');
+            const newCate = new CateImg({
+                name: newInfo,
+            });
+            await newCate.save();
+            return newCate;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    },
+    getCateImg: async () => {
+        try {
+            const data = await CateImg.find({});
+            return data;
         } catch (error) {
             throw new Error(error);
         }
