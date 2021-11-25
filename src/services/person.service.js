@@ -24,13 +24,19 @@ const personService = {
             throw new Error(error.message);
         }
     },
-    getPerson: async()=>{
-      try {
-        const result = await Person.find({});
-        return result;
-      } catch (error) {
-        throw new Error(error);
-      }
-    }
+    getPerson: async () => {
+        try {
+            const result = await Person.findOne({})
+                .populate('avatar', 'urlShow')
+                .populate('urlCV', 'urlView urlDownload')
+                .populate({
+                    path: 'society',
+                    populate: { path: 'img', select: 'urlShow' },
+                })
+            return result;
+        } catch (error) {
+            throw new Error(error);
+        }
+    },
 };
 module.exports = personService;

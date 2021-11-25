@@ -6,6 +6,14 @@ const personSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        avatar: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Image',
+        },
+        urlCV:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'File',
+        },
         phone: {
             type: String,
             required: true,
@@ -22,7 +30,7 @@ const personSchema = new mongoose.Schema(
                 },
                 img: {
                     type: mongoose.Schema.Types.ObjectId,
-                    ref: 'Icon',
+                    ref: 'Image',
                 },
             },
         ],
