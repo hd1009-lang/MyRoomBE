@@ -6,6 +6,7 @@ const timelineValidation = require('../validations/timeline.validation');
 
 // router.get('/', TimelineController.downloadCV);
 router.get('/list', TimelineController.getTimeline);
+router.get('/list-admin', TimelineController.getTimeLineAdmin);
 router.post(
     '/add',
     // authMiddleware.certificate,

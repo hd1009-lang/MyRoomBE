@@ -21,12 +21,18 @@ const TimelineController = {
             return res.status(400).json({ msg: error.message });
         }
     },
+    getTimeLineAdmin: async (req, res) => {
+        try {
+            const result = await Service.getTimeLineAdmin();
+            return res.status(200).json({ result });
+        } catch (error) {
+            return res.status(400).json({ msg: error.message });
+        }
+    },
     updateTimeline: async (req, res) => {
         try {
-            const result = await Service.updateTimeline({ ...req.body });
-            return res
-                .status(200)
-                .json({ msg: 'Cập nhật thành công', newInfo: result });
+            await Service.updateTimeline({ ...req.body });
+            return res.status(200).json({ result: 'Cập nhật thành công' });
         } catch (error) {
             return res.status(400).json({ msg: error.message });
         }
