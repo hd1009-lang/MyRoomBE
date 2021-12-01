@@ -6,8 +6,8 @@ const iconController = {
         try {
             const resultLink = await hanleUploadImg.uploadImg(req.files.file);
             const info = { ...req.body, ...resultLink };
-            const result = await Service.addImage(info);
-            return res.status(200).json({ result });
+            await Service.addImage(info);
+            return res.status(200).json({ result: 'Thành công' });
         } catch (error) {
             return res.status(500).json({ msg: error.message });
         }
@@ -31,8 +31,8 @@ const iconController = {
     },
     addCateImage: async (req, res) => {
         try {
-            const result = await Service.addCateImg(req.body.name);
-            return res.status(200).json({ result });
+            await Service.addCateImg(req.body.name);
+            return res.status(200).json({ result: 'Thành công' });
         } catch (error) {
             return res.status(500).json({ msg: error.message });
         }

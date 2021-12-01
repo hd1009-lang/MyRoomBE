@@ -14,7 +14,10 @@ const projectService = {
     },
     getProject: async () => {
         try {
-            const result = await Project.find({});
+            const result = await Project.find().populate(
+                'img cate techUse',
+                'name urlShow'
+            );
             return result;
         } catch (error) {
             throw new Error(error);

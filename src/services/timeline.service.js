@@ -28,7 +28,6 @@ const timelineService = {
     getTimeLineAdmin: async () => {
         try {
             const result = await Timeline.find()
-                .limit(4)
                 .populate('logo avatar', 'urlShow');
             return result;
         } catch (error) {

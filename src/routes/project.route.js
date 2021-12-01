@@ -2,7 +2,10 @@ const router = require('express').Router();
 const cateProjectController = require('../controllers/cateproject.controller');
 const projectController = require('../controllers/project.controller');
 
-router.route('/cate').post(cateProjectController.addCate);
+router
+    .route('/cate')
+    .post(cateProjectController.addCate)
+    .get(cateProjectController.getCateProject);
 
 router
     .route('/')
