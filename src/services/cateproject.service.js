@@ -22,6 +22,14 @@ const cateProjectService = {
             throw new Error(error);
         }
     },
+    deleteCate: async (id) => {
+        try {
+            await CateProject.findByIdAndRemove(id);
+            return;
+        } catch (error) {
+            throw new Error(error);
+        }
+    },
 };
 
 module.exports = cateProjectService;

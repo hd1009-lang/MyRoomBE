@@ -7,11 +7,15 @@ router
     .post(cateProjectController.addCate)
     .get(cateProjectController.getCateProject);
 
+router.route('/cate/:id').delete(cateProjectController.deleteCateProject);
+
 router
     .route('/')
     .post(projectController.addProject)
     .get(projectController.getProject);
 
 router.route('/:id').post(projectController.updateProject);
+
+router.route('/with-cate/:id').get(projectController.getProjectWithCate);
 
 module.exports = router;

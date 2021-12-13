@@ -28,7 +28,7 @@ const personService = {
         try {
             const result = await Person.findOne({})
                 .populate('avatar', 'urlShow')
-                .populate('urlCV', 'urlView urlDownload')
+                .populate('urlCV', 'idFile urlView urlDownload')
                 .populate({
                     path: 'society',
                     populate: { path: 'img', select: 'urlShow' },

@@ -14,12 +14,10 @@ const fileController = {
         }
     },
     updateFile: async (req, res) => {
+        console.log(req.body);
         try {
-            const resultLink = await driveAPI.updateFile(
-                req.body.idFile,
-                req.files.file
-            );
-            return res.status(200).json({ resultLink });
+            await driveAPI.updateFile(req.body.idFile, req.files.file);
+            return res.status(200).json({ result: 'Thành công' });
         } catch (error) {
             console.log(error.message);
             return res.status(500).json({ msg: error.message });

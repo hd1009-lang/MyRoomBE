@@ -31,5 +31,16 @@ const projectService = {
             throw new Error(error);
         }
     },
+    getProjectWithCate: async (id) => {
+        try {
+            const result = await Project.find({ cate: id }).populate(
+                'img cate techUse',
+                'name urlShow'
+            );
+            return result;
+        } catch (error) {
+            throw new Error(error);
+        }
+    },
 };
 module.exports = projectService;
