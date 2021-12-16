@@ -10,7 +10,7 @@ const personSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Image',
         },
-        urlCV:{
+        urlCV: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'File',
         },

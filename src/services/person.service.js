@@ -32,8 +32,55 @@ const personService = {
                 .populate({
                     path: 'society',
                     populate: { path: 'img', select: 'urlShow' },
-                })
+                });
             return result;
+        } catch (error) {
+            throw new Error(error);
+        }
+    },
+    addSociety: async (id, info) => {
+        console.log({ id, info });
+        try {
+            await Person.findByIdAndUpdate(
+                { _id: id },
+                { $push: { society: info } }
+            );
+            return;
+        } catch (error) {
+            throw new Error(error);
+        }
+    },
+    updateSociety: async (id, info) => {
+        console.log({ id, info });
+        try {
+            await Person.findByIdAndUpdate(
+                { _id: id },
+                {
+                    $set: { 'society.$[elementX].url': info.url },
+                    'society.$[elementX].img': info.img,
+                },
+                {
+                    arrayFilters: [
+                        {
+                            'elementX._id': info.id,
+                        },
+                    ],
+                }
+            );
+            return;
+        } catch (error) {
+            throw new Error(error);
+        }
+    },
+    deleteSociety: async (id, data) => {
+        console.log({ id, data: data.info });
+        try {
+            const result = await Person.findByIdAndUpdate(
+                { _id: id },
+                { $pull: { society: { _id: data.info } } }
+            );
+            console.log(result);
+            return;
         } catch (error) {
             throw new Error(error);
         }
