@@ -3,6 +3,7 @@ const fileUpload = require('express-fileupload');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const helmet = require('helmet');
 const connectDB = require('./config/db');
 
 const authRoute = require('./routes/auth.route');
@@ -16,6 +17,7 @@ const personRoute = require('./routes/person.route');
 dotenv.config();
 connectDB();
 const app = express();
+app.use(helmet());
 app.use(cors());
 
 app.use(cookieParser());
